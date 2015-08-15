@@ -1,3 +1,5 @@
 *.zip
 .idea/workspace.xml
 modules/*
+.idea/*
+*.iml
