@@ -1,0 +1,10 @@
+{
+  "name" : "simple-router",
+  "version" : "0.1",
+  "author" : "admin",
+  "dependencies" : { },
+  "module" : "module.js",
+  "license" : "LICENSE.md",
+  "url" : "https://github.com/Automately/simple-router",
+  "description" : "simple-router is a simple HttpServer Request Router that makes it easy to organize your request handlers"
+}
