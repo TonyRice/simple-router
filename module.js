@@ -4,13 +4,9 @@ var Router = function () {
     var postHandlers = {};
     var putHandlers = {};
     var deleteHandlers = {};
-    var defaultHandler = function () {
-        return {
-            entity: "",
-            content_type: "text/html"
-        }
+    var defaultHandler = function(r, rs){
+        rs.end();
     };
-
     this.get = function (regex, handler) {
         var parsed = regex.toString().replace(/^\/|(\/|\/\g)$/g, '');
         getHandlers[parsed] = handler;
