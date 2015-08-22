@@ -4,9 +4,7 @@ var Router = function () {
     var postHandlers = {};
     var putHandlers = {};
     var deleteHandlers = {};
-    var defaultHandler = function(r, rs){
-        rs.end();
-    };
+    var defaultHandler = null;
     this.get = function (regex, handler) {
         var parsed = regex.toString().replace(/^\/|(\/|\/\g)$/g, '');
         getHandlers[parsed] = handler;
@@ -48,7 +46,7 @@ var Router = function () {
         }
 
         var handled = false;
-        var handler = defaultHandler;
+        var handler = null;
 
         for (var r in handlerGroup) {
             var reg = new RegExp(r);
@@ -58,7 +56,13 @@ var Router = function () {
                 break;
             }
         }
-        handler(req, req.response());
+        if(handler != null){
+            handler(req, req.response());
+        } else if(defaultHandler != null) {
+            defaultHandler(req, req.response());
+            handled = true;
+        }
+        return handled;
     };
 };
 
